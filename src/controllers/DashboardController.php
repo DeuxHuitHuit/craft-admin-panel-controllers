@@ -1,10 +1,9 @@
 <?php
 
-namespace modules\adminpanel\controllers;
+namespace deuxhuithuit\adminpanel\controllers;
 
 use Craft;
 use craft\web\Controller;
-use yii\web\Response;
 use craft\helpers\UrlHelper;
 use yii\web\UnauthorizedHttpException;
 

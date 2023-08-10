@@ -1,0 +1,47 @@
+{
+  "name": "deuxhuithuit/craft-admin-panel-controllers",
+  "description": "Adds controller to show the admin panel in headless mode",
+  "type": "craft-plugin",
+  "version": "1.0.0",
+  "keywords": [
+    "admin",
+    "control panel",
+    "headless"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Deux Huit Huit",
+      "homepage": "https://deuxhuithuit.com"
+    }
+  ],
+  "support": {
+    "email": "open-source@deuxhuithuit.com",
+    "issues": "https://github.com/DeuxHuitHuit/admin-panel-controllers/issues?state=open",
+    "source": "https://github.com/DeuxHuitHuit/admin-panel-controllers",
+    "docs": "https://github.com/DeuxHuitHuit/admin-panel-controllers/blob/dev/README.md"
+  },
+  "require": {
+    "php": "8.1.*|8.2.*",
+    "craftcms/cms": "^4.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "deuxhuithuit\\adminpanel\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Admin Panel Controllers",
+    "handle": "admin-panel-controllers",
+    "hasCpSettings": false
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.22"
+  }
+}
