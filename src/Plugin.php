@@ -2,7 +2,7 @@
 
 namespace deuxhuithuit\adminpanel;
 
-class AdminPanel extends \craft\base\Plugin
+class Plugin extends \craft\base\Plugin
 {
     public function __construct($id, $parent = null, array $config = [])
     {
