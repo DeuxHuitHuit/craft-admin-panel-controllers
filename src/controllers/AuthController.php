@@ -2,7 +2,6 @@
 
 namespace deuxhuithuit\adminpanel\controllers;
 
-use Craft;
 use craft\web\Controller;
 use yii\web\Response;
 
@@ -12,7 +11,8 @@ class AuthController extends Controller
 
     public function actionCheck(): Response
     {
-        $canAccess = Craft::$app->getUser()?->getIdentity()?->can('accessCp');
+        $canAccess = \Craft::$app->getUser()?->getIdentity()?->can('accessCp');
+
         return $this->asJson($canAccess);
     }
 }

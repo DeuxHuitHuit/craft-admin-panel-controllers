@@ -2,9 +2,8 @@
 
 namespace deuxhuithuit\adminpanel\controllers;
 
-use Craft;
-use craft\web\Controller;
 use craft\helpers\UrlHelper;
+use craft\web\Controller;
 use yii\web\UnauthorizedHttpException;
 
 class DashboardController extends Controller
@@ -13,10 +12,11 @@ class DashboardController extends Controller
 
     public function actionRedirect()
     {
-        $canAccess = Craft::$app->getUser()?->getIdentity()?->can('accessCp');
+        $canAccess = \Craft::$app->getUser()?->getIdentity()?->can('accessCp');
         if (!$canAccess) {
             throw new UnauthorizedHttpException('Unauthorized');
         }
+
         return $this->redirect(UrlHelper::cpUrl());
     }
 }

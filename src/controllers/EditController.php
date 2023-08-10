@@ -2,12 +2,11 @@
 
 namespace deuxhuithuit\adminpanel\controllers;
 
-use Craft;
 use craft\web\Controller;
-use yii\web\Response;
-use yii\web\UnauthorizedHttpException;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
+use yii\web\UnauthorizedHttpException;
 
 class EditController extends Controller
 {
@@ -15,7 +14,7 @@ class EditController extends Controller
 
     public function actionRedirect(): Response
     {
-        $canAccess = Craft::$app->getUser()?->getIdentity()?->can('accessCp');
+        $canAccess = \Craft::$app->getUser()?->getIdentity()?->can('accessCp');
         if (!$canAccess) {
             throw new UnauthorizedHttpException('Unauthorized');
         }
@@ -28,14 +27,15 @@ class EditController extends Controller
         }
         $entryUri = $query['uri'];
         $siteHandle = $query['site'];
-        $site = Craft::$app->sites->getSiteByHandle($siteHandle);
+        $site = \Craft::$app->sites->getSiteByHandle($siteHandle);
         if (!$site) {
             throw new BadRequestHttpException('Invalid site handle');
         }
-        $entry = Craft::$app->elements->getElementByUri($entryUri, $site['id']);
+        $entry = \Craft::$app->elements->getElementByUri($entryUri, $site['id']);
         if (!$entry) {
             throw new NotFoundHttpException('No entry found');
         }
+
         return $this->redirect($entry->cpEditUrl);
     }
 }
