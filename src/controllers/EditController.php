@@ -6,6 +6,9 @@ use Craft;
 use craft\web\Controller;
 use yii\web\Response;
 use craft\helpers\UrlHelper;
+use yii\web\UnauthorizedHttpException;
+use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 
 class EditController extends Controller
 {
@@ -15,40 +18,24 @@ class EditController extends Controller
     {
         $canAccess = Craft::$app->getUser()?->getIdentity()?->can('accessCp');
         if (!$canAccess) {
-            $this->response->setStatusCode(401, 'Unauthorized');
-            return $this->asJson([
-                'message' => 'Unauthorized'
-            ]);
+            throw new UnauthorizedHttpException('Unauthorized');
         }
         $query = $this->request->getQueryParams();
         if (!isset($query['uri'])) {
-            $this->response->setStatusCode(400, 'Bad request');
-            return $this->asJson([
-                'message' => 'Missing entry uri'
-            ]);
+            throw new BadRequestHttpException('Missing entry uri');
         }
         if (!isset($query['site'])) {
-            $this->response->setStatusCode(400, 'Bad request');
-            return $this->asJson([
-                'message' => 'Missing site handle'
-            ]);
+            throw new BadRequestHttpException('Missing site handle');
         }
         $entryUri = $query['uri'];
         $siteHandle = $query['site'];
         $site = Craft::$app->sites->getSiteByHandle($siteHandle);
         if (!$site) {
-            $this->response->setStatusCode(400, 'Bad request');
-            return $this->asJson([
-                'message' => 'Invalid site handle'
-            ]);
+            throw new BadRequestHttpException('Invalid site handle');
         }
         $entry = Craft::$app->elements->getElementByUri($entryUri, $site['id']);
         if (!$entry) {
-            $this->response->setStatusCode(400, 'Bad request');
-            return $this->asJson([
-                'message' => 'No entry found',
-                'entry' => $entryUri
-            ]);
+            throw new NotFoundHttpException('No entry found');
         }
         return $this->redirect($entry->cpEditUrl);
     }
