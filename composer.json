@@ -2,7 +2,7 @@
   "name": "deuxhuithuit/craft-admin-panel-controllers",
   "description": "Adds controller to show the admin panel in headless mode",
   "type": "craft-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "admin",
     "control panel",
