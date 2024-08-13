@@ -1,5 +1,11 @@
 # Change log
 
+We try to maintain a complete change log, based on what is available in git.
+
+## 1.1.0 - 2024-08-13
+
+* f04605558b (feat) Add Craft 5 (#3)
+
 ## 1.0.3 - 2024-02-08
 
 * e07354742b (chore) Add php 8.3 support
