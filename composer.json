@@ -51,5 +51,5 @@
     "craftcms/phpstan": "dev-main",
     "friendsofphp/php-cs-fixer": "^3.35",
     "squizlabs/php_codesniffer": "^3.7"
-  },
+  }
 }
