@@ -2,6 +2,10 @@
 
 We try to maintain a complete change log, based on what is available in git.
 
+## 1.1.1 - 2025-06-03
+
+* e7ba8a017a (chore) Compat with php 8.4 (#4)
+
 ## 1.1.0 - 2024-08-13
 
 * f04605558b (feat) Add Craft 5 (#3)
